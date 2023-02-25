@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'schdle/css/base.css' %}">
+    <meta charset="UTF-8">
+    {% block head %}
+
+    {% endblock head %}
+
+    {% block mainmenu %}
+
+
+<nav class="two">
+  <ul>
+      {% for item in menu %}
+    <li><a href="#"><i class="fa fa-home fa-fw"></i>{{item}}</a></li>
+      {% endfor %}
+  </ul>
+</nav>
+
+
+    {% endblock mainmenu %}
+</head>
+<body>
+{% block content %}
+{% endblock content %}
+</body>
+<footer>
+    {% block footer %}
+    {% endblock footer %}
+</footer>
+</html>

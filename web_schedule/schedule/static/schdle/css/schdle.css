@@ -1,0 +1,18 @@
+.schedule-tb {
+    margin: auto;
+    border: 1px solid;
+    background: rgba(173, 192, 206, .3);
+    color: #29838C;
+    border-collapse: collapse;
+
+    margin-top: 30px
+
+
+}
+
+.schedule-tb td {
+    text-align: center;
+    border: 1px solid;
+    border-collapse: collapse;
+    padding: 15px
+}

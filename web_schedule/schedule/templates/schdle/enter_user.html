@@ -1,0 +1,44 @@
+
+{% extends "schdle/base.html" %}
+{% load static %}
+
+{% block head %}
+      <link rel="stylesheet" href="{% static 'schdle/css/enter_user.css' %}">
+      <title>{{title}}</title>
+{% endblock head %}
+
+
+
+{% block content %}
+
+<h1>Авторизация</h1>
+
+<div class="enter_form">
+      <form action="" method="post">
+            {% csrf_token %}
+            <div>
+                  <div class="enter_form">
+                        <table>
+                        {% for field in form %}
+                              <tr>
+                                    <td class="label"><p>{{field.label}}</p></td>
+                                    <td>{{field}}</td>
+                              </tr>
+                        {% endfor %}
+                        </table> 
+                  </div>
+                                 
+            </div>
+            <button class="enter_form" type="submit">Войти</button>
+            <a class="enter_form" href="#">Забыли пароль?</a>
+            <a class="enter_form" href="{% url '' %}">Регистрация</a>
+      </form>
+</div>
+      
+
+
+
+
+
+
+{% endblock content %}

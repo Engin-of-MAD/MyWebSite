@@ -100,6 +100,9 @@ class Days(models.Model):
         managed = False
         db_table = 'days'
 
+    def __str__(self):
+        return self.day
+
 
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
@@ -159,7 +162,6 @@ class Employee(models.Model):
         db_table = 'employee'
 
 
-
 class Lessons(models.Model):
     ls_id = models.IntegerField(primary_key=True)
     tchr_id = models.IntegerField(blank=True, null=True)
@@ -204,6 +206,12 @@ class Schedule(models.Model):
     class Meta:
         managed = False
         db_table = 'schedule'
+        verbose_name = 'Расписание'
+        verbose_name_plural = 'Расписание'
+        ordering = ['day_id', 'time', 'aud_id']
+
+    def __str__(self):
+        return str(self.day_id)
 
     @classmethod
     def decode(cls):
@@ -249,9 +257,40 @@ class Schedule(models.Model):
 
     @classmethod
     def sort_schedule(cls, data: list):
-        for index, item_data in enumerate(data):
-            if data['day'] == "Понедельник":
-                pass
+        sorted_data = []
+        for item_data in data:
+            if item_data['day'] == "Понедельник":
+                sorted_data.append(item_data)
+
+        for item_data in data:
+            if item_data['day'] == "Вторник":
+                sorted_data.append(item_data)
+
+        for item_data in data:
+            if item_data['day'] == "Среда":
+                sorted_data.append(item_data)
+
+        for item_data in data:
+            if item_data['day'] == "Четверг":
+                sorted_data.append(item_data)
+
+        for item_data in data:
+            if item_data['day'] == "Пятница":
+                sorted_data.append(item_data)
+
+        for item_data in data:
+            if item_data['day'] == "Суббота":
+                sorted_data.append(item_data)
+
+        for item_data in data:
+            if item_data['day'] == "Суббота":
+                sorted_data.append(item_data)
+
+        for item_data in data:
+            if item_data['day'] == "Воскресенье":
+                sorted_data.append(item_data)
+
+        return sorted_data
 
 
 class Students(models.Model):
@@ -273,3 +312,7 @@ class TypesLessons(models.Model):
     class Meta:
         managed = False
         db_table = 'types_lessons'
+
+
+class TypesOrgs(models.Model):
+    orgs = models.CharField(max_length=64)

@@ -1,12 +1,17 @@
 
 {% extends "schdle/base.html" %}
+{% load data_tags %}
 {% load static %}
+
 {% block head %}
       <link rel="stylesheet" href="{% static 'schdle/css/schdle.css' %}">
       <title>{{title}}</title>
 {% endblock head %}
 
+
+
 {% block content %}
+
 <h1>Расписание</h1>
 <table class="schedule-tb">
       <tr class="schedule-tb">
@@ -17,13 +22,15 @@
       {% for item_data in data_tb %}
       <tr class="schedule-tb">
             <td>{{item_data.day}}</td>
-            <td>{{item_data.lesson}}</td>
+            <td >{{item_data.lesson}}</td>
             <td>{{item_data.aud}}</td>
             <td>{{item_data.teacher}}</td>
             <td>{{item_data.type_lesson}}</td>
             <td>{{item_data.time|time:"H:i"}}</td>
       </tr>
       {% endfor %}
+
+
 
 </table>
 

@@ -28,20 +28,50 @@ nav {
   margin: 0 auto 30px;
 }
 
-.two ul {
+.main_menu ul {
   background: #D4E7EE;
   overflow: hidden;
   padding: 0;
 }
-.two li {
+.main_menu li {
   float: left;
 }
-.two a {
+.main_menu a {
   display: block;
   padding: 1em;
   border-right: 1px solid #ADC0CE;
   background: rgba(173, 192, 206, .3);
   color: #29838C;
 }
-.two a:hover {background: #ADC0CE}
+.main_menu a:hover {background: #ADC0CE}
+
+footer {
+  margin-top: 50px;
+  background-color: #29838C;
+  padding:10px;
+  padding-left: 15px; 
+  font-size: 16px;
+  color: #fafaff;  
+}
+
+.base_avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 20%;
+}
+
+.user_avatar {
+  
+  margin-left: 1%;
+  height: 20px;
+}
+
+
+
+.register{
+  
+  margin-left: 65.68%;
+  position: relative;
+  top: 15px;  
+}
 

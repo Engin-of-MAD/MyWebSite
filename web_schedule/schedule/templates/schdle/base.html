@@ -10,25 +10,33 @@
     {% endblock head %}
 
     {% block mainmenu %}
-
-
-<nav class="two">
+<nav class="main_menu">
   <ul>
       {% for item in menu %}
     <li><a href="#"><i class="fa fa-home fa-fw"></i>{{item}}</a></li>
       {% endfor %}
+    
+    <li class="register">
+        <button type="submit" name="enter_btn">Войти</button>
+    </li>  
+    
+    <li class="user_avatar">
+        <a  href="#">
+        <img class="base_avatar" src="{% static 'schdle/img/user_avatar.png' %}" alt="Аватарка">
+        </a>
+    </li>
   </ul>
 </nav>
-
-
     {% endblock mainmenu %}
 </head>
 <body>
+    
 {% block content %}
+    <p>Контакты</p>
 {% endblock content %}
 </body>
-<footer>
-    {% block footer %}
-    {% endblock footer %}
+<footer class="custom_footer">
+    <p>Контакты: быдло@gmail.com</p>
+    <p>Компания © Быдло Компани. Все права защищены.</p>
 </footer>
 </html>

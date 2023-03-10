@@ -8,31 +8,36 @@
     {% block head %}
 
     {% endblock head %}
-
-    {% block mainmenu %}
-<nav class="main_menu">
-  <ul>
-      {% for item in menu %}
-    <li><a href="#"><i class="fa fa-home fa-fw"></i>{{item}}</a></li>
-      {% endfor %}
-    
-    <li class="register">
-        <button type="submit" name="enter_btn">Войти</button>
-    </li>  
-    
-    <li class="user_avatar">
-        <a  href="#">
-        <img class="base_avatar" src="{% static 'schdle/img/user_avatar.png' %}" alt="Аватарка">
-        </a>
-    </li>
-  </ul>
-</nav>
-    {% endblock mainmenu %}
 </head>
 <body>
     
+    {% block mainmenu %}
+		<div class="header">
+			<ul id="mainmenu" class="mainmenu">
+{% for m in menu %}
+			<li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+{% endfor %}
+				{% if request.user.is_authenticated %}
+				<li class="last"> {{user.username}} | <a href="{% url 'logout' %}">Выйти</a></li>
+                <li> 
+                    <a href=""><img src="{% static 'schdle/img/user_avatar.png' %}" alt="">Профиль</a> 
+                    <!--<a href="{% url 'profile' %}"><img class="user_avatar" src="{% static 'schdle/img/user_avatar.png' %}" alt=""></a> -->
+                </li>
+				{% else %}
+				<li class="last">
+                    <a href="{% url 'reg' %}">Регистрация</a>  
+                    <a href="{% url 'login' %}">Войти</a>
+                </li>
+              
+                {% endif %}
+               
+			</ul>
+			<div class="clear"></div>
+		</div>
+{% endblock mainmenu %}
+
 {% block content %}
-    <p>Контакты</p>
+
 {% endblock content %}
 </body>
 <footer class="custom_footer">

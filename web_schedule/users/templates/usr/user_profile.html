@@ -1,0 +1,32 @@
+{% extends "schdle/base.html" %}
+{% load static %}
+
+{% block head %}
+      <link rel="stylesheet" href="{% static '' %}">
+      <title>{{title}}</title>
+{% endblock%}
+
+
+{% block content %}
+
+<h1>Профиль</h1>
+
+<div class="card-body">
+      {% if user.profile.profile_pic %}
+        <img src="{{ profile.profile_pic.url }}" height=100 width=100><br><br>
+      {% else %}
+        <img src="{% static 'base\images\profile\user.png' %}" height=100 width=100><br><br>
+      {% endif %}
+        <p><strong>Username:</strong> {{ page_user }}</p><br><br>
+        <p><strong>Bio:</strong> {{ profile.bio }}</p><br><br>
+        
+        {% if profile.telegram %}
+        <p><strong>Telegram:</strong> {{ profile.telegram }}</p><br><br>
+        {% endif %}
+       
+  
+        {% if user.id == profile.user.id %}
+        <a href="{% url 'edit_profile' %}"><button class="button">Edit</button></a>
+        {% endif %}
+
+{% endblock %}

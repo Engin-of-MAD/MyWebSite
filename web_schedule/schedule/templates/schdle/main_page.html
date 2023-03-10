@@ -1,0 +1,30 @@
+{% extends "schdle/base.html" %}
+{% load static %}
+{% block head %}
+      <link rel="stylesheet" href="{% static 'schdle/css/reg.css' %}">
+      <title>{{title}}</title>
+{% endblock head %}
+
+
+{% block content %}
+
+<h1>Главная страница</h1>
+
+<form action="" method="post">
+    <div class="form-error">{{ form.non_field_errors }}</div>
+
+    {% for f in form %}
+    <p>
+        <label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}
+    </p>
+        <div class="form-error">{{ f.errors }}</div>
+    {% endfor %}
+    <button class="reg_form" type="submit">Отправить </button>
+</div>
+</form>
+
+<form action="" method="get">
+    
+</form>
+
+{% endblock content %}

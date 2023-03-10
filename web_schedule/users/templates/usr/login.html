@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block head %}
-      <link rel="stylesheet" href="{% static 'schdle/css/enter_user.css' %}">
+     
       <title>{{title}}</title>
 {% endblock head %}
 
@@ -31,7 +31,7 @@
             </div>
             <button class="enter_form" type="submit">Войти</button>
             <a class="enter_form" href="#">Забыли пароль?</a>
-            <a class="enter_form" href="{% url '' %}">Регистрация</a>
+            <a class="enter_form" href="{% url 'reg' %}">Регистрация</a>
       </form>
 </div>
       

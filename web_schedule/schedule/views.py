@@ -1,27 +1,17 @@
-from django.shortcuts import render
+from django.views.generic import FormView
 
+from users.utils import DataMixin
 from .forms import *
 
 
-menu = ['Главная', 'Расписание', 'О нас']
-schdl = ['День недели', 'Предмет', 'Аудитория', 'Преподаватель', 'Тип Занятий', 'Время']
-data_tb = Schedule.decode()
-data_tb = Schedule.sort_schedule(data_tb)
-context = {'title': 'Расписание', 'menu': menu, 'schedule': schdl, 'data_tb': data_tb}
+class MainPage(DataMixin, FormView):
+    template_name = 'schdle/main_page.html'
+    form_class = MainForm
+    success_url = 'schdle/main_page.html'
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Главная страница")
+        return dict(list(context.items()) + list(c_def.items()))
 
-def index(request):
-    return render(request, 'schdle/schedule.html', context=context)
-
-
-def enter_page(request):
-    enter_form = EnterForm()
-    context = {'form': enter_form, 'menu': menu, 'title': 'Вход в аккаунт'}
-    return render(request, 'schdle/enter_user.html', context=context)
-
-
-def reg_page(request):
-    reg_form = RegForm()
-    context = {'form': reg_form, 'menu': menu, 'title': 'Регистрация'}
-    return render(request, 'schdle/register_page.html', context=context)
 

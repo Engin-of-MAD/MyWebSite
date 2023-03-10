@@ -11,6 +11,12 @@
     padding-left: 25%;
 }
 
-form {
-    
+.reg_form p {
+    text-align: center;
+}
+
+.reg_form button {
+    margin-top: 3%;
+    position: relative;
+    left: 44%;
 }

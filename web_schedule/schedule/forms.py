@@ -1,22 +1,16 @@
 from django import forms
+from django.core.exceptions import ValidationError
 
 from .models import *
 
 
-class SignUP(forms.Form):
-    btn_enter = None
-    btn_reg = None
-
-
-class EnterForm(forms.Form):
-    login = forms.CharField(label="Логин", max_length=128)
-    password = forms.CharField(label="Пароль", widget=forms.PasswordInput, max_length=128)
-
-
-class RegForm(forms.Form):
-    email = forms.CharField(label="Email", widget=forms.PasswordInput)
-    first_name = forms.CharField(label="Имя", max_length=32)
-    last_name = forms.CharField(label="Фамилия", max_length=32)
-    # type_org = forms.ModelChoiceField(label="Тип организации", queryset=TypesOrgs.objects.all())
-    nickname = forms.CharField(label="Никнейм", max_length=64)
-    avatar = forms.FileField(label="Аватарка")
+class MainForm(forms.Form):
+    data_teachers = forms.FileField(label='Данные об учетелях')
+    data_lessons = forms.FileField(label='Данные об уроках')
+    data_auds = forms.FileField(label='Данные об аудиториях')
+    data_groups = forms.FileField(label='Данные об группах учащихся')
+    working_week = forms.IntegerField(label='Рабочая неделя')
+    max_lessons = forms.IntegerField(label='Максимальное кол-во предметов в день')
+    min_break_between_lessons = forms.IntegerField(label='Минимальный перерыв между уроками')
+    max_break_between_lessons = forms.IntegerField(label='Максимальный перерыв между уроками')
+    after_lesson_max_break = forms.IntegerField(label='После какого максимальный перерыв')
